@@ -1,0 +1,9 @@
+.CountriesList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.CountriesList li {
+  list-style: none;
+  margin: 2rem 2rem;
+}
