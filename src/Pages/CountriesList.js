@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import { getDataFromTree } from "@apollo/client/react/ssr";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { useCountries } from "../Hooks/UseCountries";
 
 import "./CountriesList.css";
 
-export default function CountriesList(props) {
+export default function CountriesList() {
   const { error, loading, data } = useCountries();
   const [isModalOpened, setisModalOpened] = useState(false);
-  const [modalContent, setModalContent] = useState([]);
+  const [modalContent, setModalContent] = useState(() => {
+    const localData = localStorage.getItem("contents");
+
+    return localData ? JSON.parse(localData) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("contents", JSON.stringify(modalContent));
+  });
 
   const changecontent = (country) => {
     setModalContent(country);
