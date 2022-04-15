@@ -1,5 +1,8 @@
+import Modal from "react-modal";
 import "./App.css";
 import CountriesList from "./Pages/CountriesList";
+
+Modal.setAppElement("#root");
 
 function App() {
   return (

@@ -5,6 +5,10 @@ const GET_COUNTRIES = gql`
     countries {
       code
       name
+      currency
+      capital
+      phone
+      native
     }
   }
 `;
