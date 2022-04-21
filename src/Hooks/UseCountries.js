@@ -5,13 +5,21 @@ const GET_COUNTRIES = gql`
     countries {
       code
       name
-      currency
-      capital
-      phone
-      native
     }
   }
 `;
+
+// export const GET_COUNTRY = gql`
+//   query countries($code: ID!) {
+//     country(code: $code) {
+//       name
+//       capital
+//       currency
+//       phone
+//       native
+//     }
+//   }
+// `;
 
 export const useCountries = () => {
   const { error, loading, data } = useQuery(GET_COUNTRIES);

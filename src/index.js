@@ -3,25 +3,32 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  defaultDataIdFromObject,
+} from "@apollo/client";
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com/",
   cache: new InMemoryCache({
-    typePolicies: {
-      Country: {
-        keyFields: ["code"],
-        fields: {
-          names: {
-            read: (_, { readField }) => {
-              const name = readField("name");
+    dataIdFromObject: (object: any) =>
+      object.code || defaultDataIdFromObject(object),
+    // typePolicies: {
+    //   Country: {
+    //     keyFields: ["code"],
+    //     fields: {
+    //       names: {
+    //         read: (_, { readField }) => {
+    //           const name = readField("name");
 
-              return `${name}`;
-            },
-          },
-        },
-      },
-    },
+    //           return `${name}`;
+    //         },
+    //       },
+    //     },
+    //   },
+    // },
   }),
 });
 
