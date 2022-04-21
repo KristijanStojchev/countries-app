@@ -13,7 +13,6 @@ export default function CountriesList() {
   const { error, loading, data } = useCountries();
   const [isModalOpened, setisModalOpened] = useState(false);
   const [modalContent, setModalContent] = useState(null);
-  // const [skipState, setSkipState] = useState(true);
 
   // const {
   //   error: errorCountry,
@@ -26,10 +25,6 @@ export default function CountriesList() {
     loading: loadingCountry,
     data: dataCountry,
   } = useCountry(modalContent);
-
-  // const changeskipvalue = (value) => {
-  //   setSkipState(value);
-  // };
 
   const changecode = (code) => {
     setModalContent(code);
@@ -68,7 +63,6 @@ export default function CountriesList() {
               onClick={() => {
                 setisModalOpened(true);
                 changecode(country.code);
-                // changeskipvalue(false);
               }}
               key={country.code}
             >
