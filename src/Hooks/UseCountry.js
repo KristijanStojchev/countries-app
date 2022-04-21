@@ -18,10 +18,10 @@ export const GET_COUNTRY = gql`
 //   data: dataCountry,
 // } = useQuery(GET_COUNTRY, { variables: { code: modalContent.code } });
 
-export const useCountry = (modalContent, skipState) => {
+export const useCountry = (modalContent) => {
   const { error, loading, data } = useQuery(GET_COUNTRY, {
     variables: { code: modalContent },
-    skip: skipState,
+    skip: !modalContent,
   });
 
   return {
