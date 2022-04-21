@@ -12,8 +12,8 @@ import "./CountriesList.css";
 export default function CountriesList() {
   const { error, loading, data } = useCountries();
   const [isModalOpened, setisModalOpened] = useState(false);
-  const [modalContent, setModalContent] = useState([]);
-  const [skipState, setSkipState] = useState(true);
+  const [modalContent, setModalContent] = useState(null);
+  // const [skipState, setSkipState] = useState(true);
 
   // const {
   //   error: errorCountry,
@@ -25,11 +25,11 @@ export default function CountriesList() {
     error: errorCountry,
     loading: loadingCountry,
     data: dataCountry,
-  } = useCountry(modalContent, skipState);
+  } = useCountry(modalContent);
 
-  const changeskipvalue = (value) => {
-    setSkipState(value);
-  };
+  // const changeskipvalue = (value) => {
+  //   setSkipState(value);
+  // };
 
   const changecode = (code) => {
     setModalContent(code);
@@ -68,7 +68,7 @@ export default function CountriesList() {
               onClick={() => {
                 setisModalOpened(true);
                 changecode(country.code);
-                changeskipvalue(false);
+                // changeskipvalue(false);
               }}
               key={country.code}
             >
